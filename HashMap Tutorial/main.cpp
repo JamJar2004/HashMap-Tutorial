@@ -26,25 +26,8 @@ int main()
 	map[18] = "R";
 	map[19] = "S";
 
-	std::cout << map[1 ] << std::endl;
-	std::cout << map[2 ] << std::endl;
-	std::cout << map[3 ] << std::endl;
-	std::cout << map[4 ] << std::endl;
-	std::cout << map[5 ] << std::endl;
-	std::cout << map[6 ] << std::endl;
-	std::cout << map[7 ] << std::endl;
-	std::cout << map[8 ] << std::endl;
-	std::cout << map[9 ] << std::endl;
-	std::cout << map[10] << std::endl;
-	std::cout << map[11] << std::endl;
-	std::cout << map[12] << std::endl;
-	std::cout << map[13] << std::endl;
-	std::cout << map[14] << std::endl;
-	std::cout << map[15] << std::endl;
-	std::cout << map[16] << std::endl;
-	std::cout << map[17] << std::endl;
-	std::cout << map[18] << std::endl;
-	std::cout << map[19] << std::endl;
+	for(int key : map.GetKeys())
+		std::cout << map[key] << std::endl;
 
 	map.Remove(1);
 	map.Remove(2);
@@ -53,47 +36,13 @@ int main()
 	map.Remove(5);
 	map.Remove(6);
 
-	std::cout << map[1 ] << std::endl;
-	std::cout << map[2 ] << std::endl;
-	std::cout << map[3 ] << std::endl;
-	std::cout << map[4 ] << std::endl;
-	std::cout << map[5 ] << std::endl;
-	std::cout << map[6 ] << std::endl;
-	std::cout << map[7 ] << std::endl;
-	std::cout << map[8 ] << std::endl;
-	std::cout << map[9 ] << std::endl;
-	std::cout << map[10] << std::endl;
-	std::cout << map[11] << std::endl;
-	std::cout << map[12] << std::endl;
-	std::cout << map[13] << std::endl;
-	std::cout << map[14] << std::endl;
-	std::cout << map[15] << std::endl;
-	std::cout << map[16] << std::endl;
-	std::cout << map[17] << std::endl;
-	std::cout << map[18] << std::endl;
-	std::cout << map[19] << std::endl;
+	for(int key : map.GetKeys())
+		std::cout << map[key] << std::endl;
 
 	map.Clear();
 
-	std::cout << map[1 ] << std::endl;
-	std::cout << map[2 ] << std::endl;
-	std::cout << map[3 ] << std::endl;
-	std::cout << map[4 ] << std::endl;
-	std::cout << map[5 ] << std::endl;
-	std::cout << map[6 ] << std::endl;
-	std::cout << map[7 ] << std::endl;
-	std::cout << map[8 ] << std::endl;
-	std::cout << map[9 ] << std::endl;
-	std::cout << map[10] << std::endl;
-	std::cout << map[11] << std::endl;
-	std::cout << map[12] << std::endl;
-	std::cout << map[13] << std::endl;
-	std::cout << map[14] << std::endl;
-	std::cout << map[15] << std::endl;
-	std::cout << map[16] << std::endl;
-	std::cout << map[17] << std::endl;
-	std::cout << map[18] << std::endl;
-	std::cout << map[19] << std::endl;
+	for(int key : map.GetKeys())
+		std::cout << map[key] << std::endl;
 
 	return 0;
 }

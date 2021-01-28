@@ -1,32 +1,35 @@
 ﻿  main.cpp
-c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(59): warning C4244: 'initializing': conversion from 'float' to 'std::size_t', possible loss of data
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(53): note: while compiling class template member function 'HashMap<int,std::string>::HashMap(std::size_t,float)'
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(49): note: see reference to function template instantiation 'HashMap<int,std::string>::HashMap(std::size_t,float)' being compiled
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(49): note: see reference to class template instantiation 'HashMap<int,std::string>' being compiled
-c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(190): warning C4244: '=': conversion from 'float' to 'std::size_t', possible loss of data
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(181): note: while compiling class template member function 'void HashMap<int,std::string>::Reallocate(void)'
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(112): note: see reference to function template instantiation 'void HashMap<int,std::string>::Reallocate(void)' being compiled
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(82): note: while compiling class template member function 'bool HashMap<int,std::string>::PlaceInBucket(Entry<K,V> **,const K &,const V &)'
+c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(68): warning C4244: 'initializing': conversion from 'float' to 'std::size_t', possible loss of data
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(62): note: while compiling class template member function 'HashMap<int,std::string>::HashMap(std::size_t,float)'
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(7): note: see reference to function template instantiation 'HashMap<int,std::string>::HashMap(std::size_t,float)' being compiled
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(7): note: see reference to class template instantiation 'HashMap<int,std::string>' being compiled
+c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(382): warning C4244: '=': conversion from 'float' to 'std::size_t', possible loss of data
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(373): note: while compiling class template member function 'void HashMap<int,std::string>::Reallocate(void)'
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(304): note: see reference to function template instantiation 'void HashMap<int,std::string>::Reallocate(void)' being compiled
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(274): note: while compiling class template member function 'bool HashMap<int,std::string>::PlaceInBucket(Entry<K,V> **,const K &,const V &)'
           with
           [
               K=int,
               V=std::string
           ]
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(226): note: see reference to function template instantiation 'bool HashMap<int,std::string>::PlaceInBucket(Entry<K,V> **,const K &,const V &)' being compiled
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(418): note: see reference to function template instantiation 'bool HashMap<int,std::string>::PlaceInBucket(Entry<K,V> **,const K &,const V &)' being compiled
           with
           [
               K=int,
               V=std::string
           ]
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(221): note: while compiling class template member function 'std::string &HashMap<int,std::string>::operator [](const K &)'
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\hashmap.hpp(413): note: while compiling class template member function 'std::string &HashMap<int,std::string>::operator [](const K &)'
           with
           [
               K=int
           ]
-  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(57): note: see reference to function template instantiation 'std::string &HashMap<int,std::string>::operator [](const K &)' being compiled
+  c:\users\family cutajar\documents\visual studio 2015\projects\hashmap tutorial\hashmap tutorial\main.cpp(15): note: see reference to function template instantiation 'std::string &HashMap<int,std::string>::operator [](const K &)' being compiled
           with
           [
               K=int
           ]
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  hashMap.cpp
   HashMap Tutorial.vcxproj -> C:\Users\Family Cutajar\documents\visual studio 2015\Projects\HashMap Tutorial\Debug\HashMap Tutorial.exe
   HashMap Tutorial.vcxproj -> C:\Users\Family Cutajar\documents\visual studio 2015\Projects\HashMap Tutorial\Debug\HashMap Tutorial.pdb (Full PDB)

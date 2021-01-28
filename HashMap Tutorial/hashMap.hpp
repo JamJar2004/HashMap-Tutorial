@@ -21,8 +21,8 @@ public:
 
 	inline size_t GetHashCode() { return m_hashCode; }
 
-	inline K  GetKey()   { return m_key;   }
-	inline V& GetValue() { return m_value; }
+	inline const K& GetKey()   { return m_key;   }
+	inline       V& GetValue() { return m_value; }
 
 	inline Entry<K, V>* GetNext() { return m_next; }
 
@@ -30,6 +30,15 @@ public:
 
 	inline void SetNext(Entry<K, V>* next) { m_next = next; }
 };
+
+template<typename K, typename V>
+class KeyCollection;
+
+template<typename K, typename V>
+class ValueCollection;
+
+template<typename K, typename V>
+class EntryCollection;
 
 template<typename K, typename V>
 class HashMap
@@ -75,7 +84,190 @@ public:
 	bool Remove(const K& key);
 
 	void Clear();
+
+	KeyCollection<K, V>   GetKeys();
+	ValueCollection<K, V> GetValues();
+
+	EntryCollection<K, V> GetEntries();
 };
+
+template<typename K, typename V>
+class HashIterator
+{
+private:
+	Entry<K, V>** m_buckets;
+	size_t        m_capacity;
+
+	size_t       m_bucketIndex;
+	Entry<K, V>* m_currEntry;
+public:
+	HashIterator() : m_currEntry(nullptr), m_bucketIndex(0) {}
+
+	HashIterator(Entry<K, V>** buckets, size_t capacity) : m_buckets(buckets), m_capacity(capacity) 
+	{
+		m_bucketIndex = 0;
+		m_currEntry   = m_buckets[m_bucketIndex];
+		while(m_currEntry == nullptr)
+		{
+			m_bucketIndex++;
+			if(m_bucketIndex >= m_capacity)
+				break;
+
+			m_currEntry = m_buckets[m_bucketIndex];
+		}
+	}
+
+	HashIterator& operator++()
+	{
+		m_currEntry = m_currEntry->GetNext();
+		while(m_currEntry == nullptr)
+		{
+			m_bucketIndex++;
+			if(m_bucketIndex >= m_capacity)
+				break;
+
+			m_currEntry = m_buckets[m_bucketIndex];
+		}
+
+		return *this;
+	}
+
+	Entry<K, V>* GetCurrentEntry() { return m_currEntry; }
+
+	HashIterator& operator++(int)
+	{
+		HashIterator result = *this;
+		++(*this);
+		return result;
+	}
+
+	bool operator==(const HashIterator& other)
+	{
+		return m_currEntry == other.m_currEntry;
+	}
+
+	bool operator!=(const HashIterator& other)
+	{
+		return !(*this == other);
+	}
+};
+
+template<typename K, typename V>
+class KeyIterator : public HashIterator<K, V>
+{
+public:
+	KeyIterator()                                       : HashIterator<K, V>()                  {}
+	KeyIterator(Entry<K, V>** buckets, size_t capacity) : HashIterator<K, V>(buckets, capacity) {}
+
+	K* operator->()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return &currEntry->GetKey();
+	}
+
+	const K& operator*()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return currEntry->GetKey();
+	}
+};
+
+template<typename K, typename V>
+class ValueIterator : public HashIterator<K, V>
+{
+public:
+	ValueIterator() : HashIterator<K, V>() {}
+	ValueIterator(Entry<K, V>** buckets, size_t capacity) : HashIterator<K, V>(buckets, capacity) {}
+
+	V* operator->()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return &currEntry->GetValue();
+	}
+
+	V& operator*()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return currEntry->GetValue();
+	}
+};
+
+template<typename K, typename V>
+class EntryIterator : public HashIterator<K, V>
+{
+public:
+	EntryIterator() : HashIterator<K, V>() {}
+	EntryIterator(Entry<K, V>** buckets, size_t capacity) : HashIterator<K, V>(buckets, capacity) {}
+
+	Entry<K, V>* operator->()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return currEntry;
+	}
+
+	Entry<K, V>& operator*()
+	{
+		Entry<K, V>* currEntry = GetCurrentEntry();
+		return *currEntry;
+	}
+};
+
+template<typename K, typename V>
+class KeyCollection
+{
+private:
+	Entry<K, V>** m_buckets;
+	size_t        m_capacity;
+public:
+	KeyCollection(Entry<K, V>** buckets, size_t capacity) : m_buckets(buckets), m_capacity(capacity) {}
+
+	KeyIterator<K, V> begin() { return KeyIterator<K, V>(m_buckets, m_capacity); }
+	KeyIterator<K, V> end()   { return KeyIterator<K, V>();                      }
+};
+
+template<typename K, typename V>
+class ValueCollection
+{
+private:
+	Entry<K, V>** m_buckets;
+	size_t        m_capacity;
+public:
+	ValueCollection(Entry<K, V>** buckets, size_t capacity) : m_buckets(buckets), m_capacity(capacity) {}
+
+	ValueIterator<K, V> begin() { return ValueIterator<K, V>(m_buckets, m_capacity); }
+	ValueIterator<K, V> end()   { return ValueIterator<K, V>();                      }
+};
+
+template<typename K, typename V>
+class EntryCollection
+{
+private:
+	Entry<K, V>** m_buckets;
+	size_t        m_capacity;
+public:
+	EntryCollection(Entry<K, V>** buckets, size_t capacity) : m_buckets(buckets), m_capacity(capacity) {}
+
+	EntryIterator<K, V> begin() { return EntryIterator<K, V>(m_buckets, m_capacity); }
+	EntryIterator<K, V> end()   { return EntryIterator<K, V>();                      }
+};
+
+template<typename K, typename V>
+KeyCollection<K, V> HashMap<K, V>::GetKeys()
+{
+	return KeyCollection<K, V>(m_buckets, m_capacity);
+}
+
+template<typename K, typename V>
+ValueCollection<K, V> HashMap<K, V>::GetValues()
+{
+	return ValueCollection<K, V>(m_buckets, m_capacity);
+}
+
+template<typename K, typename V>
+EntryCollection<K, V> HashMap<K, V>::GetEntries()
+{
+	return EntryCollection<K, V>(m_buckets, m_capacity);
+}
 
 template<typename K, typename V>
 bool HashMap<K, V>::PlaceInBucket(Entry<K, V>** bucket, const K& key, const V& value)
